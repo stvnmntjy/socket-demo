@@ -1,7 +1,18 @@
 doctype 5
 html
     head
+        link[href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"][rel="stylesheet"]
+        link[href="css/index.css"][rel="stylesheet"]
     body
-        p hello!
+        div.container
+            div.row
+                div.col-md-12
+                    div.input-append
+                        button.btn.btn-sm.search-icon
+                            span.glyphicon.glyphicon-search
+                        input.typeahead#symbol-search[type="search"][required][autofocus][placeholder="GOOGL"]
+        script[src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"]
+        script[src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.2/typeahead.bundle.min.js"]
+        script[src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"]
         script[src="js/index.js"]
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/eknkc/amber"
@@ -54,5 +55,11 @@ func socketHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, e.Error(), http.StatusBadRequest)
 		return
 	}
-	conn.WriteMessage(websocket.TextMessage, p)
+	s := string(p[:len(p)])
+	log.Println(s)
+	rep, e := http.Get("http://dev.markitondemand.com/Api/v2/Quote/json?symbol=" + s)
+	b := make([]byte, rep.ContentLength)
+	rep.Body.Read(b)
+	log.Println(string(b[:len(b)]))
+	conn.WriteMessage(websocket.TextMessage, b)
 }
